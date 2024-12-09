@@ -504,6 +504,7 @@ dependencies = [
  "commonware-macros",
  "commonware-runtime",
  "commonware-utils",
+ "criterion",
  "futures",
  "prost",
  "prost-build",

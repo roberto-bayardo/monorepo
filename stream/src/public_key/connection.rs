@@ -31,6 +31,22 @@ pub struct Connection<Si: Sink, St: Stream> {
 }
 
 impl<Si: Sink, St: Stream> Connection<Si, St> {
+    pub fn new(
+        dialer: bool,
+        sink: Si,
+        stream: St,
+        cipher: ChaCha20Poly1305,
+        max_message_size: usize,
+    ) -> Self {
+        Self {
+            dialer,
+            sink,
+            stream,
+            cipher,
+            max_message_size,
+        }
+    }
+
     pub async fn upgrade_dialer<C: Scheme>(
         mut runtime: impl Rng + CryptoRng + Spawner + Clock,
         mut config: Config<C>,
